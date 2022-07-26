@@ -1,25 +1,9 @@
-# README
+# システム概要
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails 5 速習実践ガイド 5.2 対応
+タスク管理アプリケーションの作成
 
-Things you may want to cover:
-
-* Ruby version
-* ruby 2.5.1
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version (2.5.1)
+* Rails version(5.2.8)
+* 使用PC(MacBook Pro)
+* 使用OS(macOS monterey 12.4)
