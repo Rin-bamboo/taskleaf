@@ -8,11 +8,11 @@ describe 'タスク管理機能', type: :system do
       # 作成者がユーザーAであるタスクを作成しておく
       FactoryBot.create(:task, name: '最初のタスク', user: user_a)
     end
-    cntext 'ユーザーAがログインしている時' do
+    context 'ユーザーAがログインしている時' do
       before do
         # ユーザーAでログインする
         visit login_path
-        fill_in 'メールアドレス', with: 'a@example'
+        fill_in 'session[email]', with: 'a@example.com'
         fill_in 'パスワード', with: 'password'
         click_button 'ログインする'
       end
@@ -22,7 +22,21 @@ describe 'タスク管理機能', type: :system do
         expect(page).to have_content '最初のタスク'
       end
     end
+    
+    context 'ユーザーBがログインしているとき' do
+      before do
+        #ユーザーBを作成しておく
+        FactoryBot.create(:user, name: 'ユーザーA', email: 'b@example.com')
+        #ユーザーBでログインする
+        visit login_path
+        fill_in 'session[email]', with: 'b@example.com'
+        fill_in 'パスワード', with: 'password'
+        click_button 'ログインする'
+      end
+      it 'ユーザーAが作成したタスクが表示されない' do
+        #ユーザーAが作成したタスクの名称が画面上に表示されていないことを確認
+        expect(page).to have_no_content '最初のタスク'
+      end
+    end
   end
 end
-
-
